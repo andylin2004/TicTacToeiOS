@@ -14,8 +14,11 @@ struct BoardView: View {
     @State var width: CGFloat? = nil
     //true is x, false is y
     @State var turn: Bool = true
+    @State var alertWin: Bool = false
+    @State var alertMessage: String = ""
     
     @State var board: [[String]] = Array(repeating: [" ", " ", " "], count: 3)
+    @State var intPlayed: Int = 0
     
     var body: some View {
         VStack{
@@ -30,6 +33,8 @@ struct BoardView: View {
                     ForEach(0..<9){ number in
                         Button(action: {
                                 board[number/3][number%3] = changeState(turn: turn, x: number/3, y: number%3)
+                            intPlayed += 1
+                            alertWin = checkForWin(x: number/3, y: number%3) || intPlayed == 9
                             turn = !turn
                         },
                                label: {
@@ -49,13 +54,45 @@ struct BoardView: View {
             .assignMaxPreference(for: gridWidth.key, to: $width)
             .navigationBarTitle("")
             .navigationBarHidden(true)
-            
+        }
+        .alert(isPresented: $alertWin){
+            Alert(title: Text(alertMessage))
         }
         
     }
+    
+    func changeState(turn: Bool, x: Int, y: Int) -> String{
+        board[x][y] = turn ? "X" : "O"
+        print(x, y, board)
+        return turn ? "X" : "O"
+    }
+    
+    func checkForWin(x: Int, y: Int) -> Bool{
+        if intPlayed < 3 {return false}
+        var allSame: Int = 0
+        for index in 0...1{
+            allSame += board[x][index] == board [x][index+1] ? 1 : 0
+        }
+        print(allSame)
+        if allSame == 2{
+            alertMessage = "Player \(turn ? "1" : "2") win!"
+            return true
+        }else{
+            allSame = 0
+            for index in 0...1{
+                allSame += board[index][y] == board [index+1][y] ? 1 : 0
+            }
+        }
+        if intPlayed == 9{
+            alertMessage = "It's a draw"
+        }else{
+            alertMessage = "Player \(turn ? "1" : "2") win!"
+        }
+        return allSame == 2
+    }
 }
 
-struct BoaedView_Previews: PreviewProvider {
+struct BoardView_Previews: PreviewProvider {
     static var previews: some View {
         BoardView()
     }
