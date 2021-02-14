@@ -90,6 +90,22 @@ struct BoardView: View {
         }
         return allSame == 2
     }
+    
+    func diagonalDown() -> Bool{
+        var allSame: Int = 0
+        for x in (0...1){
+            allSame += board[x][x] == board[x+1][x+1] ? 1 : 0
+        }
+        return allSame == 2
+    }
+    
+    func diagonalUp() -> Bool{
+        var allSame: Int = 0
+        for x in (0...1){
+            allSame += board[x][2-x] == board[x+1][1-x] ? 1 : 0
+        }
+        return allSame == 2
+    }
 }
 
 struct BoardView_Previews: PreviewProvider {
