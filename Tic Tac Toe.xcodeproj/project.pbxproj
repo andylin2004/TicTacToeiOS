@@ -11,6 +11,7 @@
 		422459D625D8C33500A7BCAB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422459D525D8C33500A7BCAB /* ContentView.swift */; };
 		422459D825D8C33700A7BCAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 422459D725D8C33700A7BCAB /* Assets.xcassets */; };
 		422459DB25D8C33700A7BCAB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 422459DA25D8C33700A7BCAB /* Preview Assets.xcassets */; };
+		422459E425D8C6AE00A7BCAB /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422459E325D8C6AE00A7BCAB /* BoardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		422459D725D8C33700A7BCAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		422459DA25D8C33700A7BCAB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		422459DC25D8C33700A7BCAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		422459E325D8C6AE00A7BCAB /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				422459D325D8C33500A7BCAB /* Tic_Tac_ToeApp.swift */,
 				422459D525D8C33500A7BCAB /* ContentView.swift */,
+				422459E325D8C6AE00A7BCAB /* BoardView.swift */,
 				422459D725D8C33700A7BCAB /* Assets.xcassets */,
 				422459DC25D8C33700A7BCAB /* Info.plist */,
 				422459D925D8C33700A7BCAB /* Preview Content */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				422459E425D8C6AE00A7BCAB /* BoardView.swift in Sources */,
 				422459D625D8C33500A7BCAB /* ContentView.swift in Sources */,
 				422459D425D8C33500A7BCAB /* Tic_Tac_ToeApp.swift in Sources */,
 			);
