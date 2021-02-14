@@ -9,18 +9,21 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack{
-            Text("Tic Tac Toe")
-                .font(.system(size: 75))
-                .fontWeight(.bold)
-                .multilineTextAlignment(.center)
-                .padding()
-            NavigationLink(
-                destination: BoardView(),
-                label: {
+        NavigationView{
+            VStack{
+                Text("Tic Tac Toe")
+                    .font(.system(size: 50))
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                NavigationLink(
+                    destination: BoardView()){
                     Text("Play")
-                        .font(.system(size: 50))
-                })
+                        .font(.system(size: 25))
+                }
+            }
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
         }
     }
 }
