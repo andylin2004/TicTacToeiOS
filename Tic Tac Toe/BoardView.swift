@@ -8,10 +8,29 @@
 import SwiftUI
 
 struct BoardView: View {
+    private var threeColView = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
+        VStack{
+            Text("Player 1 Turn")
+            ZStack{
+                Image("board")
+                    .navigationBarTitle("")
+                    .navigationBarHidden(true)
+                LazyVGrid(columns: threeColView, spacing: 80){
+                    Text("e")
+                    Text("")
+                    Text("")
+                    Text("e")
+                    Text("")
+                    Text("")
+                    Text("e")
+                    Text("")
+                    Text("e")
+                }
+            }
+            
+        }
+        
     }
 }
 
