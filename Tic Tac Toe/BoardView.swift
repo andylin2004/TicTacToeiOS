@@ -32,10 +32,12 @@ struct BoardView: View {
                 LazyVGrid(columns: threeColView, spacing: 40){
                     ForEach(0..<9){ number in
                         Button(action: {
+                            if board[number/3][number%3] == " "{
                                 board[number/3][number%3] = changeState(turn: turn, x: number/3, y: number%3)
                             intPlayed += 1
                             alertWin = checkForWin(x: number/3, y: number%3) || intPlayed == 9
                             turn = !turn
+                            }
                         },
                                label: {
                                 ZStack{
@@ -70,22 +72,33 @@ struct BoardView: View {
     func checkForWin(x: Int, y: Int) -> Bool{
         if intPlayed < 3 {return false}
         var allSame: Int = 0
+        var result: Bool = false
         for index in 0...1{
             allSame += board[x][index] == board [x][index+1] ? 1 : 0
         }
         print(allSame)
-        if allSame == 2{
-            alertMessage = "Player \(turn ? "1" : "2") win!"
-            return true
-        }else{
+        if allSame != 2{
             allSame = 0
             for index in 0...1{
                 allSame += board[index][y] == board [index+1][y] ? 1 : 0
             }
+            if allSame != 2{
+                if x == 1 && y == 1{
+                    result = diagonalUp() || diagonalDown()
+                }else if x == y{
+                    result = diagonalDown()
+                }else if max(x, y) - 2 == y{
+                    result = diagonalUp()
+                }
+            }else{
+                result = true
+            }
+        }else{
+            result = true
         }
         if intPlayed == 9{
             alertMessage = "It's a draw"
-        }else{
+        }else if result{
             alertMessage = "Player \(turn ? "1" : "2") win!"
         }
         return allSame == 2
