@@ -19,7 +19,7 @@ struct Tic_Tac_ToeApp: App {
 }
 
 func changeState(turn: Bool, x: Int, y: Int) -> String{
-    board[x][y] = "x"
+    board[x][y] = turn ? "X" : "O"
     print(x, y, board)
-    return "x"
+    return turn ? "X" : "O"
 }

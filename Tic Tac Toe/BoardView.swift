@@ -12,6 +12,8 @@ struct BoardView: View {
     enum GridWidth: Preference{}
     let gridWidth = GeometryPreferenceReader(key: AppendValue<GridWidth>.self, value: {[$0.size.width]})
     @State var width: CGFloat? = nil
+    //true is x, false is y
+    @State var turn: Bool = true
     
     @State var board: [[String]] = Array(repeating: [" ", " ", " "], count: 3)
     
@@ -27,7 +29,9 @@ struct BoardView: View {
                 LazyVGrid(columns: threeColView, spacing: 40){
                     ForEach(0..<9){ number in
                         Button(action: {
-                                board[number/3][number%3] = changeState(turn: false, x: number/3, y: number%3)},
+                                board[number/3][number%3] = changeState(turn: turn, x: number/3, y: number%3)
+                            turn = !turn
+                        },
                                label: {
                                 ZStack{
                                     Rectangle()
