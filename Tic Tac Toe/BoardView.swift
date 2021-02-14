@@ -22,7 +22,7 @@ struct BoardView: View {
     
     var body: some View {
         VStack{
-            Text("Player \(turn ? "1" : "2") Turn")
+            Text("Player \(turn ? "1" : "2")'s Turn")
                 .font(.system(size: 50))
                 .fontWeight(.bold)
                 .padding(.bottom, 30)
@@ -57,8 +57,14 @@ struct BoardView: View {
             .navigationBarTitle("")
             .navigationBarHidden(true)
         }
-        .alert(isPresented: $alertWin){
-            Alert(title: Text(alertMessage))
+        .alert(isPresented: $alertWin){ () -> Alert in
+            let restartButton = Alert.Button.default(Text("Restart Game")){
+                turn = true
+                alertMessage = ""
+                board = Array(repeating: [" ", " ", " "], count: 3)
+                intPlayed = 0
+        }
+            return Alert(title: Text(alertMessage), dismissButton: restartButton)
         }
         
     }
