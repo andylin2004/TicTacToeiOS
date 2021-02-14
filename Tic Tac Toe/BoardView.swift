@@ -13,24 +13,65 @@ struct BoardView: View {
     let gridWidth = GeometryPreferenceReader(key: AppendValue<GridWidth>.self, value: {[$0.size.width]})
     @State var width: CGFloat? = nil
     
+    @State var board: [[String]] = Array(repeating: ["    ", "    ", "    "], count: 3)
+    
     var body: some View {
         VStack{
             Text("Player 1 Turn")
+                .font(.system(size: 50))
+                .fontWeight(.bold)
+                .padding(.bottom, 30)
             ZStack{
                 Image("board")
                     .read(gridWidth)
-                    .frame(width: width)
-                LazyVGrid(columns: threeColView, spacing: 80){
-                    Text("e")
-                    Text("")
-                    Text("")
-                    Text("e")
-                    Text("")
-                    Text("")
-                    Text("e")
-                    Text("")
-                    Text("e")
+                LazyVGrid(columns: threeColView, spacing: 40){
+                    Button(action: {board[0][0] = changeState(turn: false, x: 0, y: 0)}, label: {
+                        Text(board[0][0])
+                    })
+                    .background(Color.green)
+                    .font(.system(size: 50))
+                    Button(action: {board[0][0] = changeState(turn: false, x: 0, y: 0)}, label: {
+                        Text(board[0][0])
+                    })
+                    .background(Color.blue)
+                    .font(.system(size: 50))
+                    Button(action: {board[0][0] = changeState(turn: false, x: 0, y: 0)}, label: {
+                        Text(board[0][0])
+                    })
+                    .background(Color.blue)
+                    .font(.system(size: 50))
+                    Button(action: {board[0][0] = changeState(turn: false, x: 0, y: 0)}, label: {
+                        Text(board[0][0])
+                    })
+                    .background(Color.blue)
+                    .font(.system(size: 50))
+                    Button(action: {board[0][0] = changeState(turn: false, x: 0, y: 0)}, label: {
+                        Text(board[0][0])
+                    })
+                    .background(Color.blue)
+                    .font(.system(size: 50))
+                    Button(action: {board[0][0] = changeState(turn: false, x: 0, y: 0)}, label: {
+                        Text(board[0][0])
+                    })
+                    .background(Color.blue)
+                    .font(.system(size: 50))
+                    Button(action: {board[0][0] = changeState(turn: false, x: 0, y: 0)}, label: {
+                        Text(board[0][0])
+                    })
+                    .background(Color.blue)
+                    .font(.system(size: 50))
+                    Button(action: {board[0][0] = changeState(turn: false, x: 0, y: 0)}, label: {
+                        Text(board[0][0])
+                    })
+                    .background(Color.blue)
+                    .font(.system(size: 50))
+                    Button(action: {board[0][0] = changeState(turn: false, x: 0, y: 0)}, label: {
+                        Text(board[0][0])
+                    })
+                    .background(Color.blue)
+                    .font(.system(size: 50))
                 }
+                .padding(.all)
                 .frame(width: width)
             }
             .assignMaxPreference(for: gridWidth.key, to: $width)
