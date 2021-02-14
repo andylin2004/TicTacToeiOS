@@ -71,7 +71,6 @@ struct BoardView: View {
     
     func changeState(turn: Bool, x: Int, y: Int) -> String{
         board[x][y] = turn ? "X" : "O"
-        print(x, y, board)
         return turn ? "X" : "O"
     }
     
@@ -82,7 +81,6 @@ struct BoardView: View {
         for index in 0...1{
             allSame += board[x][index] == board [x][index+1] ? 1 : 0
         }
-        print(allSame)
         if allSame != 2{
             allSame = 0
             for index in 0...1{
