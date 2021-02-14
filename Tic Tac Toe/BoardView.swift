@@ -19,7 +19,7 @@ struct BoardView: View {
     
     var body: some View {
         VStack{
-            Text("Player 1 Turn")
+            Text("Player \(turn ? "1" : "2") Turn")
                 .font(.system(size: 50))
                 .fontWeight(.bold)
                 .padding(.bottom, 30)
