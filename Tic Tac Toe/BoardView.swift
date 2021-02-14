@@ -101,7 +101,7 @@ struct BoardView: View {
         }else if result{
             alertMessage = "Player \(turn ? "1" : "2") win!"
         }
-        return allSame == 2
+        return result
     }
     
     func diagonalDown() -> Bool{
